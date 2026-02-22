@@ -1,25 +1,89 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Navbar from "../../components/Navbar.astro";
 import Hero from "../../components/Hero.astro";
 import Experience from "../../components/Experience.astro";
-import Projects from "../../components/Projects.astro";
-import MoreProjects from "../../components/MoreProjects.astro";
-import About from "../../components/About.astro";
-import Footer from "../../components/Footer.astro";
-import { es } from "../../i18n";
+import ProjectCard from "../../components/ProjectCard.astro";
+import OtherProjects from "../../components/OtherProjects.astro";
+import AboutMe from "../../components/AboutMe.astro";
+import { useTranslations } from "../../i18n/utils";
 
-const t = es;
+const t = useTranslations("es");
+
+const experiences = [
+  {
+    company: "Rhino Labs",
+    role: "Desarrollador Fullstack Senior",
+    time: "2023 - Presente",
+    description: "Liderando el desarrollo de aplicaciones web de alto rendimiento utilizando tecnologías modernas. Enfocado en escalabilidad, código limpio y diseño centrado en el usuario para entregar soluciones digitales robustas."
+  },
+  {
+    company: "Freelance",
+    role: "Desarrollador Web",
+    time: "2021 - 2023",
+    description: "Entregado exitosamente diversos proyectos web para clientes internacionales, especializándome en diseño responsivo y frameworks modernos de frontend para construir experiencias de usuario envolventes."
+  }
+];
+
+const featuredProjects = [
+  {
+    title: "EcoSphere Dashboard",
+    description: "Un tablero de monitoreo ambiental en tiempo real con visualizaciones de datos interactivas y capacidades de análisis predictivo para la gestión sostenible de recursos.",
+    image: "/assets/rhinolabs.jpg",
+    technologies: ["React", "TypeScript", "D3.js", "Node.js"],
+    github: "https://github.com",
+    preview: "https://example.com"
+  },
+  {
+    title: "Nova Commerce",
+    description: "Plataforma de comercio electrónico de próxima generación con un rendimiento ultra rápido, recomendaciones personalizadas y una experiencia de pago fluida impulsada por arquitectura headless.",
+    image: "/assets/douglas-bg.jpg",
+    technologies: ["Next.js", "TailwindCSS", "Supabase", "Stripe"],
+    github: "https://github.com"
+  }
+];
+
+const otherProjects = [
+  {
+    title: "TaskFlow AI",
+    technologies: ["Python", "FastAPI", "React"],
+    github: "https://github.com",
+    preview: "https://example.com"
+  },
+  {
+    title: "Zen UI Kit",
+    technologies: ["Astro", "TailwindCSS"],
+    github: "https://github.com"
+  },
+  {
+    title: "Crypto Tracker",
+    technologies: ["SolidJS", "Go"],
+    preview: "https://example.com"
+  }
+];
 ---
 
-<Layout t={t} title="Douglas Lovera — Desarrollador Frontend">
-  <Navbar t={t} />
-  <main>
-    <Hero t={t} />
-    <Experience t={t} />
-    <Projects t={t} />
-    <MoreProjects t={t} />
-    <About t={t} />
-  </main>
-  <Footer t={t} />
+<Layout title="Douglas Lovera | Desarrollador Web">
+  <Hero 
+    name="Douglas Lovera" 
+    role="Desarrollador Web"
+    description="Construyendo experiencias digitales impactantes con un enfoque en el rendimiento, la estética y el diseño minimalista. Basado en el mundo digital."
+  />
+
+  <Experience title={t("experience.title")} experiences={experiences} />
+
+  <section id="projects" class="py-20 md:py-32 scroll-mt-24">
+    <h2 class="text-5xl md:text-7xl font-black italic tracking-tighter mb-16 inline-block bg-white text-black px-6 py-2 rotate-[-1deg] border-4 border-black">
+      {t("projects.title")}
+    </h2>
+    <div class="space-y-4">
+      {featuredProjects.map(proj => <ProjectCard {...proj} />)}
+    </div>
+  </section>
+
+  <OtherProjects title={t("projects.more")} projects={otherProjects} />
+
+  <AboutMe 
+    title={t("about.title")} 
+    description="Apasionado por la intersección del diseño y la tecnología, creo soluciones digitales que no solo son funcionales sino también visualmente atractivas. Con años de experiencia en desarrollo fullstack, me enfoco en construir aplicaciones escalables e interfaces de usuario intuitivas que dejen una impresión duradera."
+  />
 </Layout>

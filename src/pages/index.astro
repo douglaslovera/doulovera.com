@@ -1,25 +1,89 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
 import Experience from "../components/Experience.astro";
-import Projects from "../components/Projects.astro";
-import MoreProjects from "../components/MoreProjects.astro";
-import About from "../components/About.astro";
-import Footer from "../components/Footer.astro";
-import { en } from "../i18n";
+import ProjectCard from "../components/ProjectCard.astro";
+import OtherProjects from "../components/OtherProjects.astro";
+import AboutMe from "../components/AboutMe.astro";
+import { useTranslations } from "../i18n/utils";
 
-const t = en;
+const t = useTranslations("en");
+
+const experiences = [
+  {
+    company: "Rhino Labs",
+    role: "Senior Fullstack Developer",
+    time: "2023 - Present",
+    description: "Leading the development of high-performance web applications using modern technologies. Focusing on scalability, clean code, and user-centric design to deliver robust digital solutions."
+  },
+  {
+    company: "Freelance",
+    role: "Web Developer",
+    time: "2021 - 2023",
+    description: "Successfully delivered diverse web projects for international clients, specializing in responsive design and modern frontend frameworks to build engaging user experiences."
+  }
+];
+
+const featuredProjects = [
+  {
+    title: "EcoSphere Dashboard",
+    description: "A real-time environmental monitoring dashboard with interactive data visualizations and predictive analysis capabilities for sustainable resource management.",
+    image: "/assets/rhinolabs.jpg",
+    technologies: ["React", "TypeScript", "D3.js", "Node.js"],
+    github: "https://github.com",
+    preview: "https://example.com"
+  },
+  {
+    title: "Nova Commerce",
+    description: "Next-generation e-commerce platform with ultra-fast performance, personalized recommendations, and a seamless checkout experience powered by headless architecture.",
+    image: "/assets/douglas-bg.jpg",
+    technologies: ["Next.js", "TailwindCSS", "Supabase", "Stripe"],
+    github: "https://github.com"
+  }
+];
+
+const otherProjects = [
+  {
+    title: "TaskFlow AI",
+    technologies: ["Python", "FastAPI", "React"],
+    github: "https://github.com",
+    preview: "https://example.com"
+  },
+  {
+    title: "Zen UI Kit",
+    technologies: ["Astro", "TailwindCSS"],
+    github: "https://github.com"
+  },
+  {
+    title: "Crypto Tracker",
+    technologies: ["SolidJS", "Go"],
+    preview: "https://example.com"
+  }
+];
 ---
 
-<Layout t={t} title="Douglas Lovera — Frontend Developer">
-  <Navbar t={t} />
-  <main>
-    <Hero t={t} />
-    <Experience t={t} />
-    <Projects t={t} />
-    <MoreProjects t={t} />
-    <About t={t} />
-  </main>
-  <Footer t={t} />
+<Layout title="Douglas Lovera | Web Developer">
+  <Hero 
+    name="Douglas Lovera" 
+    role="Web Developer"
+    description="Building striking digital experiences with a focus on performance, aesthetics, and minimalist design. Based in the digital realm."
+  />
+
+  <Experience title={t("experience.title")} experiences={experiences} />
+
+  <section id="projects" class="py-20 md:py-32 scroll-mt-24">
+    <h2 class="text-5xl md:text-7xl font-black italic tracking-tighter mb-16 inline-block bg-white text-black px-6 py-2 rotate-[-1deg] border-4 border-black">
+      {t("projects.title")}
+    </h2>
+    <div class="space-y-4">
+      {featuredProjects.map(proj => <ProjectCard {...proj} />)}
+    </div>
+  </section>
+
+  <OtherProjects title={t("projects.more")} projects={otherProjects} />
+
+  <AboutMe 
+    title={t("about.title")} 
+    description="Passionate about the intersection of design and technology, I create digital solutions that are not only functional but also visually compelling. With years of experience in fullstack development, I focus on building scalable applications and intuitive user interfaces that leave a lasting impression."
+  />
 </Layout>

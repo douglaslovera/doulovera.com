@@ -1,261 +1,54 @@
 ---
-import Button from "./Button.astro";
-import type { Translations } from "../i18n";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 interface Props {
-  t: Translations;
+  name: string;
+  role: string;
+  description: string;
 }
 
-const { t } = Astro.props;
+const { name, role, description } = Astro.props;
 ---
 
-<section class="hero section" id="hero">
-  <div class="container">
-    <div class="hero-inner">
-      <!-- Left: text -->
-      <div class="hero-text">
-        <p class="hero-eyebrow animate-fade-up">
-          <span class="eyebrow-dot"></span>Available for work
-        </p>
-
-        <div class="hero-name-wrap animate-fade-up delay-100">
-          <h1 class="hero-name">{t.hero.name}</h1>
-          <span class="cursor"></span>
-        </div>
-
-        <p class="hero-role animate-fade-up delay-200">
-          {t.hero.role}
-        </p>
-
-        <p class="hero-description animate-fade-up delay-300">
-          {t.hero.description}
-        </p>
-
-        <div class="hero-actions animate-fade-up delay-400">
-          <Button href="/resume.pdf" variant="primary" target="_blank" rel="noopener">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7,10 12,15 17,10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            {t.hero.resumeBtn}
-          </Button>
-          <Button href="https://github.com/doulovera" variant="outline" target="_blank" rel="noopener noreferrer">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-            {t.hero.githubBtn}
-          </Button>
-          <Button href="https://linkedin.com/in/doulovera" variant="outline" target="_blank" rel="noopener noreferrer">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-            {t.hero.linkedinBtn}
-          </Button>
-        </div>
-      </div>
-
-      <!-- Right: photo -->
-      <div class="hero-photo animate-fade-up delay-300">
-        <div class="img-frame">
-          <img
-            src="/assets/douglas.webp"
-            alt={t.hero.name}
-            class="hero-img"
-            loading="eager"
-          />
-        </div>
-        <div class="photo-label">
-          <span>DL</span>
-        </div>
-      </div>
+<section class="min-h-[80vh] flex flex-col md:flex-row items-center justify-between gap-12 py-10 md:py-20 animate-fade-in">
+  <div class="flex-1 space-y-8">
+    <div class="space-y-4">
+      <h1 class="text-6xl md:text-8xl font-black italic tracking-tighter leading-none">
+        {name}
+      </h1>
+      <p class="text-2xl md:text-3xl font-bold text-primary inline-block bg-primary text-black px-4 py-2 rotate-[-2deg] border-2 border-black">
+        {role}
+      </p>
     </div>
+    
+    <p class="text-xl md:text-2xl text-white/80 max-w-xl font-medium leading-relaxed">
+      {description}
+    </p>
 
-    <!-- Bottom decorative row -->
-    <div class="hero-bar animate-fade-up delay-500">
-      <span class="bar-text">frontend developer</span>
-      <span class="bar-dot">◆</span>
-      <span class="bar-text">ui engineer</span>
-      <span class="bar-dot">◆</span>
-      <span class="bar-text">open source</span>
-      <span class="bar-dot">◆</span>
-      <span class="bar-text">design systems</span>
+    <div class="flex flex-wrap gap-4 pt-4">
+      <a href="/cv.pdf" class="brutal-btn brutal-btn-primary">
+        {t('hero.resume')}
+      </a>
+      <a href="https://github.com" class="brutal-btn bg-black text-white hover:bg-white hover:text-black">
+        {t('hero.github')}
+      </a>
+      <a href="https://linkedin.com" class="brutal-btn bg-[#0077b5] border-[#0077b5] text-white hover:bg-white hover:text-[#0077b5]">
+        {t('hero.linkedin')}
+      </a>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <div class="absolute inset-0 bg-primary rotate-6 border-3 border-white group-hover:rotate-3 transition-transform duration-300"></div>
+    <div class="relative border-4 border-white overflow-hidden w-64 h-64 md:w-80 md:h-80 shadow-[10px_10px_0px_0px_white]">
+      <img 
+        src="/assets/douglas.webp" 
+        alt={name}
+        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+      />
     </div>
   </div>
 </section>
-
-<style>
-  .hero {
-    padding-top: calc(60px + 5rem);
-    min-height: 100svh;
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-
-  /* Subtle grid background */
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px;
-    opacity: 0.3;
-    pointer-events: none;
-  }
-
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 4rem;
-    align-items: center;
-    position: relative;
-  }
-
-  /* ── Text ── */
-  .hero-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-
-  .eyebrow-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #44ff44;
-    box-shadow: 0 0 6px #44ff44;
-    animation: blink 2s ease-in-out infinite;
-  }
-
-  .hero-name-wrap {
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero-name {
-    font-family: var(--font-display);
-    font-size: clamp(2.8rem, 7vw, 5.5rem);
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    margin: 0;
-  }
-
-  .hero-role {
-    font-family: var(--font-mono);
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-description {
-    font-size: 15px;
-    color: var(--text-secondary);
-    max-width: 480px;
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  /* ── Photo ── */
-  .hero-photo {
-    position: relative;
-    flex-shrink: 0;
-  }
-
-  .hero-img {
-    width: 280px;
-    height: 340px;
-    object-fit: cover;
-    object-position: top;
-    display: block;
-    filter: grayscale(20%);
-    transition: filter 0.3s;
-  }
-
-  .hero-img:hover {
-    filter: grayscale(0%);
-  }
-
-  .photo-label {
-    position: absolute;
-    bottom: -12px;
-    left: -12px;
-    background: var(--accent);
-    color: var(--bg);
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    padding: 4px 10px;
-  }
-
-  /* ── Bottom bar ── */
-  .hero-bar {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  .hero-bar::-webkit-scrollbar { display: none; }
-
-  .bar-text {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .bar-dot {
-    color: var(--accent);
-    font-size: 8px;
-    flex-shrink: 0;
-  }
-
-  /* ── Responsive ── */
-  @media (max-width: 768px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto auto;
-    }
-
-    .hero-photo {
-      order: -1;
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-img {
-      width: 200px;
-      height: 240px;
-    }
-
-    .hero-name {
-      font-size: clamp(2.2rem, 10vw, 3rem);
-    }
-  }
-</style>

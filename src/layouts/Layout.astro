@@ -1,47 +1,58 @@
 ---
 import "../styles/global.css";
-import type { Translations } from "../i18n";
+import { getLangFromUrl } from "../i18n/utils";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
-  t: Translations;
-  title?: string;
+  title: string;
+  description?: string;
 }
 
-const { t, title = "Douglas Lovera — Frontend Developer" } = Astro.props;
+const { title, description = "Douglas Lovera - Portfolio" } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang={t.lang} class="dark">
+<html lang={lang} class="scroll-smooth">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={t.hero.description} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <slot />
-
-    <script>
-      // Intersection Observer for scroll reveals
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
-      );
-
-      document.querySelectorAll(".reveal, .reveal-left").forEach((el) => {
-        observer.observe(el);
-      });
-    </script>
+  <body class="bg-[#0d0d0d] text-white selection:bg-[#ffdd00] selection:text-black">
+    <Navbar />
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
+  
+  /* Smooth scrolling for IDs */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
