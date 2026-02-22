@@ -1,0 +1,152 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+import type { Translations } from "../i18n";
+
+interface Props {
+  t: Translations;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="section" id="experience">
+  <div class="container">
+    <SectionTitle label={t.experience.title} number="01" id="experience-title" />
+
+    <div class="exp-list">
+      {
+        t.experience.items.map((item, i) => (
+          <div class={`exp-item reveal ${i > 0 ? `delay-${i * 200}` : ""}`}>
+            <!-- Left: meta -->
+            <div class="exp-meta">
+              <p class="exp-company">{item.company}</p>
+              <p class="exp-role">{item.role}</p>
+              <p class="exp-period">{item.period}</p>
+            </div>
+
+            <!-- Divider line -->
+            <div class="exp-connector">
+              <div class="connector-dot" />
+              <div class="connector-line" />
+            </div>
+
+            <!-- Right: description -->
+            <div class="exp-body">
+              <p class="exp-description">{item.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 40px 1fr;
+    gap: 0;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  .exp-item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .exp-item:hover .exp-company {
+    color: var(--accent);
+  }
+
+  /* ── Meta ── */
+  .exp-meta {
+    padding-right: 2rem;
+  }
+
+  .exp-company {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+    transition: color 0.15s;
+  }
+
+  .exp-role {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+
+  .exp-period {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  /* ── Connector ── */
+  .exp-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6px;
+  }
+
+  .connector-dot {
+    width: 8px;
+    height: 8px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    background: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .connector-line {
+    flex: 1;
+    width: 1px;
+    background: var(--border);
+    margin-top: 4px;
+  }
+
+  /* ── Body ── */
+  .exp-body {
+    padding-left: 1.5rem;
+  }
+
+  .exp-description {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0;
+    max-width: 560px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .exp-item {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 1rem;
+    }
+
+    .exp-connector {
+      display: none;
+    }
+
+    .exp-body {
+      padding-left: 0;
+    }
+  }
+</style>

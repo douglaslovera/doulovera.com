@@ -1,11 +1,25 @@
 ---
-import PortfolioPage from "../../components/PortfolioPage.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getTranslations } from "../../i18n/translations";
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Hero from "../../components/Hero.astro";
+import Experience from "../../components/Experience.astro";
+import Projects from "../../components/Projects.astro";
+import MoreProjects from "../../components/MoreProjects.astro";
+import About from "../../components/About.astro";
+import Footer from "../../components/Footer.astro";
+import { es } from "../../i18n";
 
-const t = getTranslations("es");
+const t = es;
 ---
 
-<BaseLayout lang="es" title={t.meta.title} description={t.meta.description}>
-  <PortfolioPage t={t} />
-</BaseLayout>
+<Layout t={t} title="Douglas Lovera — Desarrollador Frontend">
+  <Navbar t={t} />
+  <main>
+    <Hero t={t} />
+    <Experience t={t} />
+    <Projects t={t} />
+    <MoreProjects t={t} />
+    <About t={t} />
+  </main>
+  <Footer t={t} />
+</Layout>

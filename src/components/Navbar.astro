@@ -1,0 +1,141 @@
+---
+import type { Translations } from "../i18n";
+
+interface Props {
+  t: Translations;
+}
+
+const { t } = Astro.props;
+const currentLang = t.lang;
+const otherLang = currentLang === "en" ? "es" : "en";
+const otherLangHref = otherLang === "en" ? "/" : "/es";
+---
+
+<nav class="navbar">
+  <div class="nav-inner container">
+    <a href={currentLang === "en" ? "/" : "/es"} class="nav-logo">
+      <span class="logo-bracket">[</span>DL<span class="logo-bracket">]</span>
+    </a>
+
+    <ul class="nav-links">
+      <li>
+        <a href="#experience" class="nav-link">
+          <span class="nav-index">01.</span>{t.nav.experience}
+        </a>
+      </li>
+      <li>
+        <a href="#projects" class="nav-link">
+          <span class="nav-index">02.</span>{t.nav.projects}
+        </a>
+      </li>
+      <li>
+        <a href="#about" class="nav-link">
+          <span class="nav-index">03.</span>{t.nav.about}
+        </a>
+      </li>
+    </ul>
+
+    <a href={otherLangHref} class="lang-switcher">
+      {otherLang.toUpperCase()}
+    </a>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    gap: 2rem;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: color 0.15s;
+  }
+
+  .nav-logo:hover {
+    color: var(--accent);
+  }
+
+  .logo-bracket {
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.15s;
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-index {
+    color: var(--accent);
+    font-size: 10px;
+  }
+
+  .lang-switcher {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    transition:
+      color 0.15s,
+      border-color 0.15s;
+  }
+
+  .lang-switcher:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  @media (max-width: 640px) {
+    .nav-links {
+      gap: 1rem;
+    }
+
+    .nav-index {
+      display: none;
+    }
+  }
+</style>

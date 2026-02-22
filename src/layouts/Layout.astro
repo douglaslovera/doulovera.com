@@ -1,0 +1,47 @@
+---
+import "../styles/global.css";
+import type { Translations } from "../i18n";
+
+interface Props {
+  t: Translations;
+  title?: string;
+}
+
+const { t, title = "Douglas Lovera — Frontend Developer" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={t.lang} class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={t.hero.description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // Intersection Observer for scroll reveals
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+      );
+
+      document.querySelectorAll(".reveal, .reveal-left").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
