@@ -36,15 +36,15 @@ export function getProjects(locale: SupportedLocale): {
       intro: moreTexts.intro,
       items: [
         {
+          title: moreTexts.items.atuCli,
+          technologies: ["CLI", "API", "Hono.js", "Cheerio"],
+          githubUrl: "https://github.com/doulovera/atu-cli",
+        },
+        {
           title: moreTexts.items.utilities,
           technologies: ["HTML", "CSS", "JavaScript"],
           githubUrl: "https://github.com/doulovera/utilities",
           previewUrl: "https://utilities.doulovera.com/"
-        },
-        {
-          title: moreTexts.items.atuCli,
-          technologies: ["CLI", "API", "Hono.js", "Cheerio"],
-          githubUrl: "https://github.com/doulovera/atu-cli",
         },
         {
           title: moreTexts.items.bookmarker,
