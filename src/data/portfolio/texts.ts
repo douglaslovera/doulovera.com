@@ -34,10 +34,10 @@ export const portfolioTexts = {
         },
         notion: {
           role: "Notion Consultant",
-          period: "2025 - Present",
+          period: "2025 - 2026",
           description:
             "As a Notion Consultant, I help individuals and businesses to optimize their workflows and productivity using Notion. I provide personalized consulting services, including workspace setup, template creation, and training sessions to help clients get the most out of Notion's features. I work closely with clients to understand their unique needs and goals, and I tailor my consulting services to meet those needs effectively."
-        }
+        },
       }
     },
     featuredProjects: {
@@ -62,7 +62,8 @@ export const portfolioTexts = {
       items: {
         utilities: "utilities",
         schemaAi: "schema.ai",
-        bookmarker: "Bookmarker w/ Notion"
+        bookmarker: "Bookmarker w/ Notion",
+        atuCli: "atu-cli"
       }
     },
     about: {
@@ -136,6 +137,7 @@ export const portfolioTexts = {
       items: {
         utilities: "utilities",
         schemaAi: "schema.ai",
+        atuCli: "atu-cli",
         bookmarker: "Bookmarker w/ Notion"
       }
     },

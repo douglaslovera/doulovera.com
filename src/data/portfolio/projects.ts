@@ -25,7 +25,7 @@ export function getProjects(locale: SupportedLocale): {
           title: featuredTexts.items.qeeper.title,
           description: featuredTexts.items.qeeper.description,
           technologies: ["Next.js", "Tailwind", "TypeScript", "Cloudflare Workers KV"],
-          image: "https://res.cloudinary.com/dyonw3lkf/image/upload/v1743266796/portfolio_images/tkqtj6jyfg14ncqgewl9.png",
+          image: "https://res.cloudinary.com/dyonw3lkf/image/upload/v1783882554/portfolio_images/qeeper-2026.png",
           githubUrl: "https://github.com/doulovera/qeeper",
           previewUrl: "https://qeeper.doulovera.com/"
         }
@@ -42,10 +42,9 @@ export function getProjects(locale: SupportedLocale): {
           previewUrl: "https://utilities.doulovera.com/"
         },
         {
-          title: moreTexts.items.schemaAi,
-          technologies: ["Next.js", "TypeScript", "Tailwind", "AI"],
-          githubUrl: "https://github.com/synapse-xyz/schema.ai",
-          previewUrl: "https://schema-ai-wine.vercel.app/"
+          title: moreTexts.items.atuCli,
+          technologies: ["CLI", "API", "Hono.js", "Cheerio"],
+          githubUrl: "https://github.com/doulovera/atu-cli",
         },
         {
           title: moreTexts.items.bookmarker,
