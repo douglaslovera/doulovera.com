@@ -20,14 +20,14 @@ const { badge, name, title, description, portrait, actions } = Astro.props as He
       </p>
     )}
     <div class="relative z-10 mt-6 grid gap-3">
-      <p class="font-(--accent-font) text-[0.78rem] uppercase tracking-[0.08em] text-(--muted)">
-        {title}
-      </p>
       <h1 class="max-w-[10ch] text-[clamp(4rem,10vw,7.6rem)] leading-[0.88] font-bold uppercase text-(--chrome)">
         {name}
       </h1>
+      <p class="text-[clamp(0.9rem,1.5vw,1.05rem)] font-medium tracking-[0.01em] text-(--mint)">
+        {title}
+      </p>
     </div>
-    <p class="relative z-10 mt-4 max-w-148 text-[1.08rem] text-(--muted)">
+    <p class="relative z-10 mt-8 max-w-148 text-[1.08rem] text-(--muted)">
       {description}
     </p>
     <div class="relative z-10 mt-8 flex flex-wrap gap-3">
@@ -41,7 +41,7 @@ const { badge, name, title, description, portrait, actions } = Astro.props as He
     </div>
   </SurfaceCard>
 
-  <SurfaceCard as="article" className="min-h-120 p-0">
+  <SurfaceCard as="article" className="h-[clamp(18rem,70vw,28rem)] min-h-0 p-0 lg:h-auto lg:min-h-120">
     <img class="relative z-10 h-full w-full object-cover" src={portrait} alt="Portrait placeholder" loading="eager" />
   </SurfaceCard>
 </section>
