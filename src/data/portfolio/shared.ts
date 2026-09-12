@@ -5,7 +5,7 @@ export const profileAssets = {
 
 export const profileLinks = {
   resume: "/resume",
-  github: "https://github.com/doulovera",
+  github: "https://github.com/douglaslovera",
   linkedin: "https://linkedin.com/in/douglaslovera",
   instagram: "https://instagram.com/doulovera",
   site: "/"
