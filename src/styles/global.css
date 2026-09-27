@@ -68,6 +68,76 @@ body::after {
   color: var(--bg);
 }
 
+.poc-content > * + * {
+  margin-top: 1.5rem;
+}
+
+.poc-content h2,
+.poc-content h3 {
+  color: var(--chrome);
+  font-family: var(--display-font);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.poc-content h2 {
+  margin-top: 3rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.poc-content h3 {
+  margin-top: 2.5rem;
+  font-size: 1.5rem;
+}
+
+.poc-content a {
+  color: var(--mint);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.poc-content ul,
+.poc-content ol {
+  padding-left: 1.5rem;
+}
+
+.poc-content ul {
+  list-style: disc;
+}
+
+.poc-content ol {
+  list-style: decimal;
+}
+
+.poc-content blockquote {
+  border-left: 2px solid var(--mint);
+  padding-left: 1.25rem;
+  color: var(--muted);
+}
+
+.poc-content code {
+  font-family: var(--accent-font);
+  color: var(--mint);
+}
+
+.poc-content pre {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--panel-strong);
+  padding: 1.25rem;
+}
+
+.poc-content pre code {
+  color: var(--text);
+}
+
+.poc-content img {
+  max-width: 100%;
+  border-radius: 1rem;
+}
+
 .site-shell {
   display: flow-root;
   position: relative;

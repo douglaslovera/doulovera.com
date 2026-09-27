@@ -1,0 +1,21 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} lang="en">
+  <header class="relative z-10 mx-auto flex w-full max-w-290 items-center justify-between px-4 py-8">
+    <a href="/" class="font-(--display-font) text-xl font-bold uppercase tracking-[0.08em] text-(--chrome) transition hover:text-(--mint)">/doulovera</a>
+    <nav aria-label="Page navigation" class="flex items-center gap-5 font-(--accent-font) text-xs uppercase tracking-[0.08em]">
+      <a href="/" class="text-(--muted) transition hover:text-(--mint)">Home</a>
+      <a href="/pocs" class="text-(--mint)">POCs</a>
+    </nav>
+  </header>
+  <slot />
+</BaseLayout>
