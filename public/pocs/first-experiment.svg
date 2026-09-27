@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">A first experiment</title>
+  <desc id="description">Mint and coral geometric shapes on a dark grid.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1">
+      <stop stop-color="#10211d"/>
+      <stop offset="1" stop-color="#09100f"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#98ffda" stroke-opacity=".09"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="915" cy="300" r="200" fill="none" stroke="#98ffda" stroke-width="2" opacity=".55"/>
+  <circle cx="915" cy="300" r="130" fill="none" stroke="#98ffda" stroke-width="2" opacity=".3"/>
+  <path d="M850 300h130m-65-65v130" stroke="#ff8d6b" stroke-width="8" stroke-linecap="round"/>
+  <rect x="80" y="88" width="100" height="4" rx="2" fill="#98ffda"/>
+  <text x="80" y="300" fill="#edf4f2" font-family="sans-serif" font-size="96" font-weight="700">POC / 001</text>
+  <text x="84" y="370" fill="#93a59f" font-family="monospace" font-size="28">A FIRST EXPERIMENT</text>
+</svg>
