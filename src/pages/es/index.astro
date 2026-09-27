@@ -14,7 +14,7 @@ const portfolioData = getPortfolioData("es");
 
 <BaseLayout title={portfolioData.meta.title} description={portfolioData.meta.description} lang="es">
   <Navbar items={portfolioData.navigation} localeLink={{ label: "EN", href: "/" }} />
-  <main class="mx-auto grid w-full max-w-290 gap-12 px-4 py-4 pb-16">
+  <main class="mx-auto grid w-full max-w-290 gap-12 px-4 pt-8 pb-16 md:pt-12">
     <HeroSection {...portfolioData.hero} />
     <ExperienceSection {...portfolioData.experience} />
     <FeaturedProjectsSection {...portfolioData.featuredProjects} />
